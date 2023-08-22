@@ -1,0 +1,146 @@
+<meta charset="utf-8">
+<!--<script src="test.js"></script>-->
+<script src="../js/util/type.js"></script>
+<script src="../js/util/test.js"></script>
+<script src="../js/card.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+    const test = new Test()
+//    console.log(Card.fromId(1))
+//    console.log(Type.isInt(1))
+    test.run([
+        // fromId
+        ()=>'🂠'===Card.fromId(0), // BACK
+        ()=>'🂿'===Card.fromId(53), // JOKER RED
+        ()=>'🃏'===Card.fromId(54), // JOKER BLACK 
+        ()=>'🃟'===Card.fromId(55), // JOKER WHITE 
+        ()=>'🂡'===Card.fromId(1), // ♠1
+        ()=>'🂢'===Card.fromId(2), // ♠2
+        ()=>'🂣'===Card.fromId(3), // ♠3
+        ()=>'🂤'===Card.fromId(4), // ♠4
+        ()=>'🂥'===Card.fromId(5), // ♠5
+        ()=>'🂦'===Card.fromId(6), // ♠6
+        ()=>'🂧'===Card.fromId(7), // ♠7
+        ()=>'🂨'===Card.fromId(8), // ♠8
+        ()=>'🂩'===Card.fromId(9), // ♠9
+        ()=>'🂪'===Card.fromId(10), // ♠10
+        ()=>'🂫'===Card.fromId(11), // ♠J
+        ()=>'🂭'===Card.fromId(12), // ♠Q
+        ()=>'🂮'===Card.fromId(13), // ♠K
+        ()=>'🂱'===Card.fromId(14), // ♥1
+        ()=>'🂲'===Card.fromId(15), // ♥2
+        ()=>'🂳'===Card.fromId(16), // ♥3
+        ()=>'🂴'===Card.fromId(17), // ♥4
+        ()=>'🂵'===Card.fromId(18), // ♥5
+        ()=>'🂶'===Card.fromId(19), // ♥6
+        ()=>'🂷'===Card.fromId(20), // ♥7
+        ()=>'🂸'===Card.fromId(21), // ♥8
+        ()=>'🂹'===Card.fromId(22), // ♥9
+        ()=>'🂺'===Card.fromId(23), // ♥10
+        ()=>'🂻'===Card.fromId(24), // ♥J
+        ()=>'🂽'===Card.fromId(25), // ♥Q
+        ()=>'🂾'===Card.fromId(26), // ♥K
+        ()=>'🃁'===Card.fromId(27), // ♦1
+        ()=>'🃂'===Card.fromId(28), // ♦2
+        ()=>'🃃'===Card.fromId(29), // ♦3
+        ()=>'🃄'===Card.fromId(30), // ♦4
+        ()=>'🃅'===Card.fromId(31), // ♦5
+        ()=>'🃆'===Card.fromId(32), // ♦6
+        ()=>'🃇'===Card.fromId(33), // ♦7
+        ()=>'🃈'===Card.fromId(34), // ♦8
+        ()=>'🃉'===Card.fromId(35), // ♦9
+        ()=>'🃊'===Card.fromId(36), // ♦10
+        ()=>'🃋'===Card.fromId(37), // ♦J
+        ()=>'🃍'===Card.fromId(38), // ♦Q
+        ()=>'🃎'===Card.fromId(39), // ♦K
+        ()=>'🃑'===Card.fromId(40), // ♣1
+        ()=>'🃒'===Card.fromId(41), // ♣2
+        ()=>'🃓'===Card.fromId(42), // ♣3
+        ()=>'🃔'===Card.fromId(43), // ♣4
+        ()=>'🃕'===Card.fromId(44), // ♣5
+        ()=>'🃖'===Card.fromId(45), // ♣6
+        ()=>'🃗'===Card.fromId(46), // ♣7
+        ()=>'🃘'===Card.fromId(47), // ♣8
+        ()=>'🃙'===Card.fromId(48), // ♣9
+        ()=>'🃚'===Card.fromId(49), // ♣10
+        ()=>'🃛'===Card.fromId(50), // ♣J
+        ()=>'🃝'===Card.fromId(51), // ♣Q
+        ()=>'🃞'===Card.fromId(52), // ♣K
+        ()=>test.assertError(Error, '引数idは0〜55までの整数値です。', ()=>{Card.fromId(-1)}),
+        ()=>test.assertError(Error, '引数idは0〜55までの整数値です。', ()=>{Card.fromId(56)}),
+        ()=>test.assertError(Error, '引数idは0〜55までの整数値です。', ()=>{Card.fromId(0.1)}),
+        ()=>test.assertError(Error, '引数idは0〜55までの整数値です。', ()=>{Card.fromId('A')}),
+        // fromName
+        ()=>'🂠'===Card.fromName('B'), // BACK
+        ()=>'🂿'===Card.fromName('JR'), // JOKER RED
+        ()=>'🃏'===Card.fromName('JB'), // JOKER BLACK 
+        ()=>'🃟'===Card.fromName('JW'), // JOKER WHITE 
+        ()=>'🂡'===Card.fromName('S1'), // ♠1
+        ()=>'🂢'===Card.fromName('S2'), // ♠2
+        ()=>'🂣'===Card.fromName('S3'), // ♠3
+        ()=>'🂤'===Card.fromName('S4'), // ♠4
+        ()=>'🂥'===Card.fromName('S5'), // ♠5
+        ()=>'🂦'===Card.fromName('S6'), // ♠6
+        ()=>'🂧'===Card.fromName('S7'), // ♠7
+        ()=>'🂨'===Card.fromName('S8'), // ♠8
+        ()=>'🂩'===Card.fromName('S9'), // ♠9
+        ()=>'🂪'===Card.fromName('S10'), // ♠10
+        ()=>'🂫'===Card.fromName('S11'), // ♠J
+        ()=>'🂭'===Card.fromName('S12'), // ♠Q
+        ()=>'🂮'===Card.fromName('S13'), // ♠K
+        ()=>'🂱'===Card.fromName('H1'), // ♥1
+        ()=>'🂲'===Card.fromName('H2'), // ♥2
+        ()=>'🂳'===Card.fromName('H3'), // ♥3
+        ()=>'🂴'===Card.fromName('H4'), // ♥4
+        ()=>'🂵'===Card.fromName('H5'), // ♥5
+        ()=>'🂶'===Card.fromName('H6'), // ♥6
+        ()=>'🂷'===Card.fromName('H7'), // ♥7
+        ()=>'🂸'===Card.fromName('H8'), // ♥8
+        ()=>'🂹'===Card.fromName('H9'), // ♥9
+        ()=>'🂺'===Card.fromName('H10'), // ♥10
+        ()=>'🂻'===Card.fromName('H11'), // ♥J
+        ()=>'🂽'===Card.fromName('H12'), // ♥Q
+        ()=>'🂾'===Card.fromName('H13'), // ♥K
+        ()=>'🃁'===Card.fromName('D1'), // ♦1
+        ()=>'🃂'===Card.fromName('D2'), // ♦2
+        ()=>'🃃'===Card.fromName('D3'), // ♦3
+        ()=>'🃄'===Card.fromName('D4'), // ♦4
+        ()=>'🃅'===Card.fromName('D5'), // ♦5
+        ()=>'🃆'===Card.fromName('D6'), // ♦6
+        ()=>'🃇'===Card.fromName('D7'), // ♦7
+        ()=>'🃈'===Card.fromName('D8'), // ♦8
+        ()=>'🃉'===Card.fromName('D9'), // ♦9
+        ()=>'🃊'===Card.fromName('D10'), // ♦10
+        ()=>'🃋'===Card.fromName('D11'), // ♦J
+        ()=>'🃍'===Card.fromName('D12'), // ♦Q
+        ()=>'🃎'===Card.fromName('D13'), // ♦K
+        ()=>'🃑'===Card.fromName('C1'), // ♣1
+        ()=>'🃒'===Card.fromName('C2'), // ♣2
+        ()=>'🃓'===Card.fromName('C3'), // ♣3
+        ()=>'🃔'===Card.fromName('C4'), // ♣4
+        ()=>'🃕'===Card.fromName('C5'), // ♣5
+        ()=>'🃖'===Card.fromName('C6'), // ♣6
+        ()=>'🃗'===Card.fromName('C7'), // ♣7
+        ()=>'🃘'===Card.fromName('C8'), // ♣8
+        ()=>'🃙'===Card.fromName('C9'), // ♣9
+        ()=>'🃚'===Card.fromName('C10'), // ♣10
+        ()=>'🃛'===Card.fromName('C11'), // ♣J
+        ()=>'🃝'===Card.fromName('C12'), // ♣Q
+        ()=>'🃞'===Card.fromName('C13'), // ♣K
+        ()=>test.assertError(Error, '引数suitは文字列S,H,D,Cのいずれかであるべきです。', ()=>{Card.fromName('A')}),
+        ()=>test.assertError(Error, '数は1〜13の整数値であるべきです。', ()=>{Card.fromName('S0')}),
+        ()=>test.assertError(Error, '数は1〜13の整数値であるべきです。', ()=>{Card.fromName('S14')}),
+        // new
+        ()=>'🂡'===new Card(1).Char, // ♠1
+        ()=>'🂠'===new Card(1, false).Char, // ♠1
+    ])
+});
+
+
+</script>
+
+<h1></h1>
+<header></header>
+<main></main>
+<footer></footer>
+

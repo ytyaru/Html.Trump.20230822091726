@@ -1,62 +1,12 @@
 class Card {
-    static fromId(id) {
-        if (0===id) { return '🂠' } // BACK
-        else if (1<=id && id<=52) { return '' } // SUIT Spade,Hart,Diamond,Club  NUM 1〜13(A〜K)
-        else if (53===id) { return '🂿' } // RED JOKER
-        else if (54===id) { return '🃏' } // BLACK JOKER
-        else if (55===id) { return '🃟' } // WHITE JOKER
-        else { throw new Error('') }
-    }
-    static fromName(name) {
-        switch() {
-            case 'B': return '🂠'
-            case 'RJ': return '🂿'
-            case 'BJ': return '🃏'
-            case 'WJ': return '🃟'
-        }
-        const suit = name[0]
-        const num = parseInt(name.slice(1))
-        return this.fromSuitNum(suit, num)
-    }
-    static #getSuitId(suit) {
-        if (Type.IsInt(suit)) {
-            if (suit < 1 || 4 < suit) { throw new Error('') }
-            return suit
-        }
-        else if (Type.IsStr(suit)) {
-            switch(suit) {
-                case 'S': return 1
-                case 'H': return 2
-                case 'D': return 3
-                case 'C': return 4
-                default: throw new Error('')
-            }
-        }
-        else { throw new Error('') }
-    }
-    static #getSuitAceCp(suitId) { return 0x1F0A1 + (16 * (this.#getSuitId(suit) - 1)) } // suitId=0〜4(Spade,Hart,Diamond,Club)
-    static fromSuitNum(suit, num) { return String.fromCodePoint(this.#getSuitAceCp(this.#getSuitId(suit)) + num - 1) } // A+1〜13-1
-    constructor() { // back(B), joker(JR,JB,JW), suit+num（S1,H1,D1,C1）
-        this.id = 0
-        this.isFace = false
-        this.codePoint = 0x00
+    constructor() { // back, joker(r,b,w), suit+num
+        this.back = 0
+        this.joker = 0
+        this.suit = 0
+        this.number = 0
+        this.value = 0
         this.char = '🂠'
-    }
-    faceUp() {} // 表にして置く
-    faceDown() {} // 裏にして置く
-    // IDからsuit,numを算出する
-    get Suit() { return this.SuitNum()[0] }
-    // IDからNumを算出する
-    get Num() { return this.SuitNum()[1] }
-    get SuitNum() { // -2:不正ID, -1:suitなし(Joker), 0:suit不明(裏面), 1〜4:Spade,Hart,Diamond,Club
-        if (1 <= this.id && this.id <= 52) {
-            const suitId = Math.floor(this.id / 13) + 1
-            const num = (this.id % 13) + 1
-            return [suitId, num]
-        }
-        else if (0 === this.id) { return [0,0] } // suit,num不明（裏面）
-        else if (53 <= this.id && this.id <= 55) { return [-1,-1] } // suitなし（Joker）
-        else { return [-2,-2] } // 不正ID
+        this.codePoint = 
     }
 }
 class Suit {
