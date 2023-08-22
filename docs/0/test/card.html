@@ -133,9 +133,24 @@ window.addEventListener('DOMContentLoaded', (event) => {
         // new
         ()=>'🂡'===new Card(1).Char, // ♠1
         ()=>'🂠'===new Card(1, false).Char, // ♠1
+        // Suit,Num
+        //()=>0===new Card(1, false).Suit, // ♠1裏：不明
+        ()=>1===new Card(1, false).Suit, // ♠1裏：Spade
+        ()=>1===new Card(1, false).Num,  // ♠1裏：1
+        ()=>4===new Card(52).Suit,       // ♣13：Club
+        ()=>13===new Card(52).Num,       // ♣13：King
+        ()=>-1===new Card(53).Suit, // JR：なし
+        ()=>-1===new Card(53).Num,  // JR：なし
+        ()=>-1===new Card(54).Suit, // JB：なし
+        ()=>-1===new Card(54).Num,  // JB：なし
+        ()=>-1===new Card(55).Suit, // JW：なし
+        ()=>-1===new Card(55).Num,  // JW：なし
+//        ()=>-2===new Card(-1).Suit, // 不正ID
+//        ()=>-2===new Card(56).Suit, // 不正ID
+        ()=>test.assertError(Error, '引数idは0〜55までの整数値です。', ()=>{new Card(-1)}),
+        ()=>test.assertError(Error, '引数idは0〜55までの整数値です。', ()=>{new Card(56)}),
     ])
 });
-
 
 </script>
 

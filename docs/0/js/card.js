@@ -60,8 +60,9 @@ class Card {
     get Suit() { return this.SuitNum[0] }
     // IDからNumを算出する
     get Num() { return this.SuitNum[1] }
-    get SuitNum() { return Card.#suitNum(this.id) }
+    get SuitNum() { return Card.#suitNum(this.id) }// -2:不正ID, -1:suitなし(Joker), 0:suit不明(裏面), 1〜4:Spade,Hart,Diamond,Club
     get Id() { return this.id }
+    get IsFace() { return this.isFace }
     get Char() { return (this.isFace) ? this.char : '🂠' }
     /*
     { // -2:不正ID, -1:suitなし(Joker), 0:suit不明(裏面), 1〜4:Spade,Hart,Diamond,Club
