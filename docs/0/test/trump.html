@@ -1,0 +1,83 @@
+<meta charset="utf-8">
+<script src="test.js"></script>
+<script src="../js/trump.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+    const test = new Test()
+    console.log(getCard(1, 1))
+    test.run([
+        // 正常系
+        ()=>'🂠'===getCard(-1), // BACK
+        ()=>'🂠'===getCard(-1, -99), // BACK
+        ()=>'🂿'===getCard(0, 0), // JOKER RED
+        ()=>'🃏'===getCard(0, 1), // JOKER BLACK 
+        ()=>'🃟'===getCard(0, 2), // JOKER WHITE 
+        ()=>'🂡'===getCard(1, 1), // ♠1
+        ()=>'🂢'===getCard(1, 2), // ♠2
+        ()=>'🂣'===getCard(1, 3), // ♠3
+        ()=>'🂤'===getCard(1, 4), // ♠4
+        ()=>'🂥'===getCard(1, 5), // ♠5
+        ()=>'🂦'===getCard(1, 6), // ♠6
+        ()=>'🂧'===getCard(1, 7), // ♠7
+        ()=>'🂨'===getCard(1, 8), // ♠8
+        ()=>'🂩'===getCard(1, 9), // ♠9
+        ()=>'🂪'===getCard(1, 10), // ♠10
+        ()=>'🂫'===getCard(1, 11), // ♠J
+        ()=>'🂭'===getCard(1, 12), // ♠Q
+        ()=>'🂮'===getCard(1, 13), // ♠K
+        ()=>'🂱'===getCard(2, 1), // ♥1
+        ()=>'🂲'===getCard(2, 2), // ♥2
+        ()=>'🂳'===getCard(2, 3), // ♥3
+        ()=>'🂴'===getCard(2, 4), // ♥4
+        ()=>'🂵'===getCard(2, 5), // ♥5
+        ()=>'🂶'===getCard(2, 6), // ♥6
+        ()=>'🂷'===getCard(2, 7), // ♥7
+        ()=>'🂸'===getCard(2, 8), // ♥8
+        ()=>'🂹'===getCard(2, 9), // ♥9
+        ()=>'🂺'===getCard(2, 10), // ♥10
+        ()=>'🂻'===getCard(2, 11), // ♥J
+        ()=>'🂽'===getCard(2, 12), // ♥Q
+        ()=>'🂾'===getCard(2, 13), // ♥K
+        ()=>'🃁'===getCard(3, 1), // ♦1
+        ()=>'🃂'===getCard(3, 2), // ♦2
+        ()=>'🃃'===getCard(3, 3), // ♦3
+        ()=>'🃄'===getCard(3, 4), // ♦4
+        ()=>'🃅'===getCard(3, 5), // ♦5
+        ()=>'🃆'===getCard(3, 6), // ♦6
+        ()=>'🃇'===getCard(3, 7), // ♦7
+        ()=>'🃈'===getCard(3, 8), // ♦8
+        ()=>'🃉'===getCard(3, 9), // ♦9
+        ()=>'🃊'===getCard(3, 10), // ♦10
+        ()=>'🃋'===getCard(3, 11), // ♦J
+        ()=>'🃍'===getCard(3, 12), // ♦Q
+        ()=>'🃎'===getCard(3, 13), // ♦K
+        ()=>'🃑'===getCard(4, 1), // ♣1
+        ()=>'🃒'===getCard(4, 2), // ♣2
+        ()=>'🃓'===getCard(4, 3), // ♣3
+        ()=>'🃔'===getCard(4, 4), // ♣4
+        ()=>'🃕'===getCard(4, 5), // ♣5
+        ()=>'🃖'===getCard(4, 6), // ♣6
+        ()=>'🃗'===getCard(4, 7), // ♣7
+        ()=>'🃘'===getCard(4, 8), // ♣8
+        ()=>'🃙'===getCard(4, 9), // ♣9
+        ()=>'🃚'===getCard(4, 10), // ♣10
+        ()=>'🃛'===getCard(4, 11), // ♣J
+        ()=>'🃝'===getCard(4, 12), // ♣Q
+        ()=>'🃞'===getCard(4, 13), // ♣K
+        // 異常系
+        ()=>test.assertError(Error, '引数不正。suit(-1:back, 0:joker, 1〜4:♠♥♦♣), number(joker:0〜2(Red/black/white), suit:1〜13(A〜K))', ()=>{getCard()}),
+        ()=>test.assertError(Error, '引数不正。suit(-1:back, 0:joker, 1〜4:♠♥♦♣), number(joker:0〜2(Red/black/white), suit:1〜13(A〜K))', ()=>{getCard(-2)}),
+        ()=>test.assertError(Error, '引数不正。suit(-1:back, 0:joker, 1〜4:♠♥♦♣), number(joker:0〜2(Red/black/white), suit:1〜13(A〜K))', ()=>{getCard(0.1)}),
+        ()=>test.assertError(Error, '引数不正。suit(-1:back, 0:joker, 1〜4:♠♥♦♣), number(joker:0〜2(Red/black/white), suit:1〜13(A〜K))', ()=>{getCard('A')}),
+        ()=>test.assertError(Error, 'Jokerは0〜2またはRED/BLACK/WHITEの引数のみ受け付けます。', ()=>{getCard(0)}),
+        ()=>test.assertError(Error, 'Jokerは0〜2またはRED/BLACK/WHITEの引数のみ受け付けます。', ()=>{getCard(0, -1)}),
+        ()=>test.assertError(Error, 'Jokerは0〜2またはRED/BLACK/WHITEの引数のみ受け付けます。', ()=>{getCard(0, 3)}),
+    ])
+});
+</script>
+
+<h1></h1>
+<header></header>
+<main></main>
+<footer></footer>
+
