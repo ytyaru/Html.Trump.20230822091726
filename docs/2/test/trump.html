@@ -1,0 +1,179 @@
+<meta charset="utf-8">
+<!--<script src="test.js"></script>-->
+<script src="../js/util/type.js"></script>
+<script src="../js/util/test.js"></script>
+<script src="../js/trump.js"></script>
+<script>
+window.addEventListener('DOMContentLoaded', (event) => {
+    const test = new Test()
+    console.log(getCard(1, 1))
+    test.run([
+        // 正常系（数値）
+        ()=>'🂠'===getCard(-1), // BACK
+        ()=>'🂠'===getCard(-1, -99), // BACK
+        ()=>'🂿'===getCard(0, 0), // JOKER RED
+        ()=>'🃏'===getCard(0, 1), // JOKER BLACK 
+        ()=>'🃟'===getCard(0, 2), // JOKER WHITE 
+        ()=>'🂡'===getCard(1, 1), // ♠1
+        ()=>'🂢'===getCard(1, 2), // ♠2
+        ()=>'🂣'===getCard(1, 3), // ♠3
+        ()=>'🂤'===getCard(1, 4), // ♠4
+        ()=>'🂥'===getCard(1, 5), // ♠5
+        ()=>'🂦'===getCard(1, 6), // ♠6
+        ()=>'🂧'===getCard(1, 7), // ♠7
+        ()=>'🂨'===getCard(1, 8), // ♠8
+        ()=>'🂩'===getCard(1, 9), // ♠9
+        ()=>'🂪'===getCard(1, 10), // ♠10
+        ()=>'🂫'===getCard(1, 11), // ♠J
+        ()=>'🂭'===getCard(1, 12), // ♠Q
+        ()=>'🂮'===getCard(1, 13), // ♠K
+        ()=>'🂱'===getCard(2, 1), // ♥1
+        ()=>'🂲'===getCard(2, 2), // ♥2
+        ()=>'🂳'===getCard(2, 3), // ♥3
+        ()=>'🂴'===getCard(2, 4), // ♥4
+        ()=>'🂵'===getCard(2, 5), // ♥5
+        ()=>'🂶'===getCard(2, 6), // ♥6
+        ()=>'🂷'===getCard(2, 7), // ♥7
+        ()=>'🂸'===getCard(2, 8), // ♥8
+        ()=>'🂹'===getCard(2, 9), // ♥9
+        ()=>'🂺'===getCard(2, 10), // ♥10
+        ()=>'🂻'===getCard(2, 11), // ♥J
+        ()=>'🂽'===getCard(2, 12), // ♥Q
+        ()=>'🂾'===getCard(2, 13), // ♥K
+        ()=>'🃁'===getCard(3, 1), // ♦1
+        ()=>'🃂'===getCard(3, 2), // ♦2
+        ()=>'🃃'===getCard(3, 3), // ♦3
+        ()=>'🃄'===getCard(3, 4), // ♦4
+        ()=>'🃅'===getCard(3, 5), // ♦5
+        ()=>'🃆'===getCard(3, 6), // ♦6
+        ()=>'🃇'===getCard(3, 7), // ♦7
+        ()=>'🃈'===getCard(3, 8), // ♦8
+        ()=>'🃉'===getCard(3, 9), // ♦9
+        ()=>'🃊'===getCard(3, 10), // ♦10
+        ()=>'🃋'===getCard(3, 11), // ♦J
+        ()=>'🃍'===getCard(3, 12), // ♦Q
+        ()=>'🃎'===getCard(3, 13), // ♦K
+        ()=>'🃑'===getCard(4, 1), // ♣1
+        ()=>'🃒'===getCard(4, 2), // ♣2
+        ()=>'🃓'===getCard(4, 3), // ♣3
+        ()=>'🃔'===getCard(4, 4), // ♣4
+        ()=>'🃕'===getCard(4, 5), // ♣5
+        ()=>'🃖'===getCard(4, 6), // ♣6
+        ()=>'🃗'===getCard(4, 7), // ♣7
+        ()=>'🃘'===getCard(4, 8), // ♣8
+        ()=>'🃙'===getCard(4, 9), // ♣9
+        ()=>'🃚'===getCard(4, 10), // ♣10
+        ()=>'🃛'===getCard(4, 11), // ♣J
+        ()=>'🃝'===getCard(4, 12), // ♣Q
+        ()=>'🃞'===getCard(4, 13), // ♣K
+        // 正常系（文字列）
+        ()=>'🂠'===getCard('b'), // BACK
+        ()=>'🂠'===getCard('B'), // BACK
+        ()=>'🂠'===getCard('back'), // BACK
+        ()=>'🂠'===getCard('Back'), // BACK
+        ()=>'🂠'===getCard('BACK'), // BACK
+        ()=>'🂿'===getCard('rj'), // RED JOKER
+        ()=>'🂿'===getCard('RJ'), // RED JOKER
+        ()=>'🂿'===getCard('RedJoker'), // RED JOKER
+        ()=>'🂿'===getCard('red-joker'), // RED JOKER
+        ()=>'🂿'===getCard('RED_JOKER'), // RED JOKER
+        ()=>'🃏'===getCard('bj'), // BLACK JOKER
+        ()=>'🃏'===getCard('BJ'), // BLACK JOKER
+        ()=>'🃏'===getCard('BlackJoker'), // BLACK JOKER
+        ()=>'🃏'===getCard('black-joker'), // BLACK JOKER
+        ()=>'🃏'===getCard('BLACK_JOKER'), // BLACK JOKER
+        ()=>'🃟'===getCard('wj'), // WHITE JOKER
+        ()=>'🃟'===getCard('WJ'), // WHITE JOKER
+        ()=>'🃟'===getCard('WhiteJoker'), // WHITE JOKER
+        ()=>'🃟'===getCard('white-joker'), // WHITE JOKER
+        ()=>'🃟'===getCard('WHITE_JOKER'), // WHITE JOKER
+        ()=>'🂡'===getCard('s', 1), // SPADE 1
+        ()=>'🂡'===getCard('S', 1), // SPADE 1
+        ()=>'🂡'===getCard('spade', 1), // SPADE 1
+        ()=>'🂡'===getCard('Spade', 1), // SPADE 1
+        ()=>'🂡'===getCard('SPADE', 1), // SPADE 1
+        ()=>'🂱'===getCard('h', 1), // HART 1
+        ()=>'🂱'===getCard('H', 1), // HART 1
+        ()=>'🂱'===getCard('hart', 1), // HART 1
+        ()=>'🂱'===getCard('Hart', 1), // HART 1
+        ()=>'🂱'===getCard('HART', 1), // HART 1
+        ()=>'🃁'===getCard('d', 1), // DIAMOND 1
+        ()=>'🃁'===getCard('D', 1), // DIAMOND 1
+        ()=>'🃁'===getCard('diamond', 1), // DIAMOND 1
+        ()=>'🃁'===getCard('Diamond', 1), // DIAMOND 1
+        ()=>'🃁'===getCard('DIAMOND', 1), // DIAMOND 1
+        ()=>'🃑'===getCard('c', 1), // CLUB 1
+        ()=>'🃑'===getCard('C', 1), // CLUB 1
+        ()=>'🃑'===getCard('club', 1), // CLUB 1
+        ()=>'🃑'===getCard('Club', 1), // CLUB 1
+        ()=>'🃑'===getCard('CLUB', 1), // CLUB 1
+
+        ()=>'🂢'===getCard('s', 2), // SPADE 2
+        ()=>'🂣'===getCard('s', 3), // SPADE 3
+        ()=>'🂤'===getCard('s', 4), // SPADE 4
+        ()=>'🂥'===getCard('s', 5), // SPADE 5
+        ()=>'🂦'===getCard('s', 6), // SPADE 6
+        ()=>'🂧'===getCard('s', 7), // SPADE 7
+        ()=>'🂨'===getCard('s', 8), // SPADE 8
+        ()=>'🂩'===getCard('s', 9), // SPADE 9
+        ()=>'🂪'===getCard('s', 10), // SPADE 10
+        ()=>'🂫'===getCard('s', 11), // SPADE J
+        ()=>'🂭'===getCard('s', 12), // SPADE Q
+        ()=>'🂮'===getCard('s', 13), // SPADE K
+
+        ()=>'🂲'===getCard('h', 2), // HART 2
+        ()=>'🂳'===getCard('h', 3), // HART 3
+        ()=>'🂴'===getCard('h', 4), // HART 4
+        ()=>'🂵'===getCard('h', 5), // HART 5
+        ()=>'🂶'===getCard('h', 6), // HART 6
+        ()=>'🂷'===getCard('h', 7), // HART 7
+        ()=>'🂸'===getCard('h', 8), // HART 8
+        ()=>'🂹'===getCard('h', 9), // HART 9
+        ()=>'🂺'===getCard('h', 10), // HART 10
+        ()=>'🂻'===getCard('h', 11), // HART J
+        ()=>'🂽'===getCard('h', 12), // HART Q
+        ()=>'🂾'===getCard('h', 13), // HART K
+
+        ()=>'🃂'===getCard('d', 2), // DIAMOND 2
+        ()=>'🃃'===getCard('d', 3), // DIAMOND 3
+        ()=>'🃄'===getCard('d', 4), // DIAMOND 4
+        ()=>'🃅'===getCard('d', 5), // DIAMOND 5
+        ()=>'🃆'===getCard('d', 6), // DIAMOND 6
+        ()=>'🃇'===getCard('d', 7), // DIAMOND 7
+        ()=>'🃈'===getCard('d', 8), // DIAMOND 8
+        ()=>'🃉'===getCard('d', 9), // DIAMOND 9
+        ()=>'🃊'===getCard('d', 10), // DIAMOND 10
+        ()=>'🃋'===getCard('d', 11), // DIAMOND J
+        ()=>'🃍'===getCard('d', 12), // DIAMOND Q
+        ()=>'🃎'===getCard('d', 13), // DIAMOND K
+
+        ()=>'🃒'===getCard('c', 2), // CLUB 2
+        ()=>'🃓'===getCard('c', 3), // CLUB 3
+        ()=>'🃔'===getCard('c', 4), // CLUB 4
+        ()=>'🃕'===getCard('c', 5), // CLUB 5
+        ()=>'🃖'===getCard('c', 6), // CLUB 6
+        ()=>'🃗'===getCard('c', 7), // CLUB 7
+        ()=>'🃘'===getCard('c', 8), // CLUB 8
+        ()=>'🃙'===getCard('c', 9), // CLUB 9
+        ()=>'🃚'===getCard('c', 10), // CLUB 10
+        ()=>'🃛'===getCard('c', 11), // CLUB J
+        ()=>'🃝'===getCard('c', 12), // CLUB Q
+        ()=>'🃞'===getCard('c', 13), // CLUB K
+
+        // 異常系
+        ()=>test.assertError(Error, '引数型不正。suitは整数値か文字列のみ受け付けます。', ()=>{getCard()}),
+        ()=>test.assertError(Error, '引数型不正。suitは整数値か文字列のみ受け付けます。', ()=>{getCard(0.1)}),
+        ()=>test.assertError(Error, '引数値不正。suit(-1:back, 0:joker, 1〜4:♠♥♦♣), number(joker:0〜2(Red/black/white), suit:1〜13(A〜K))', ()=>{getCard(-2)}),
+        ()=>test.assertError(Error, '引数値不正。suit(B:back, RJ/BJ/WJ:Joker, S/H/D/C:♠♥♦♣), number(1〜13:A〜K)', ()=>{getCard('A')}),
+        ()=>test.assertError(Error, 'Jokerは0〜2またはRED/BLACK/WHITEの引数のみ受け付けます。', ()=>{getCard(0)}),
+        ()=>test.assertError(Error, 'Jokerは0〜2またはRED/BLACK/WHITEの引数のみ受け付けます。', ()=>{getCard(0, -1)}),
+        ()=>test.assertError(Error, 'Jokerは0〜2またはRED/BLACK/WHITEの引数のみ受け付けます。', ()=>{getCard(0, 3)}),
+    ])
+});
+</script>
+
+<h1></h1>
+<header></header>
+<main></main>
+<footer></footer>
+
